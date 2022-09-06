@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="true">
+
+    <include resource="logback-base.xml"/>
+    <!-- 日志输出级别 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="errorLog"/>
+        <appender-ref ref="warnLog"/>
+        <appender-ref ref="infoLog"/>
+        <appender-ref ref="debugLog"/>
+    </root>
+    <logger name="jdbc.sqlonly" level="OFF"/>
+    <logger name="jdbc.audit" level="OFF"/>
+    <logger name="jdbc.resultsettable" level="OFF"/>
+    <logger name="jdbc.connection" level="INFO"/>
+    <logger name="jdbc.sqltiming" level="INFO"/>
+
+</configuration>
