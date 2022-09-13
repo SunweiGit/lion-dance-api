@@ -34,39 +34,39 @@ import java.security.NoSuchAlgorithmException;
 @ConfigurationProperties(prefix = "spring.elasticsearch")
 public class ElasticsearchClientConfig {
 
-  private String[] uris;
-  private String username;
-  private String password;
+    private String[] uris;
+    private String   username;
+    private String   password;
 
-  /**
-   * Elasticsearch client rest high level client.
-   *
-   * @return the rest high level client
-   * @throws KeyStoreException the key store exception
-   * @throws NoSuchAlgorithmException the no such algorithm exception
-   * @throws KeyManagementException the key management exception
-   * @throws URISyntaxException the uri syntax exception
-   */
-  @Bean
-  public ElasticsearchClient elasticsearchClient() {
-    log.error("loading elasticsearch info uris{} username{} password{}", uris, username, password);
-    CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-    credentialsProvider.setCredentials(
-        AuthScope.ANY, new UsernamePasswordCredentials(username, password));
-    HttpHost[] httpHost = new HttpHost[uris.length];
-    for (int i = 0; i < uris.length; i++) {
-      URI uri = URI.create(uris[i]);
-      httpHost[i] = new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme());
+    /**
+     * Elasticsearch client rest high level client.
+     *
+     * @return the rest high level client
+     * @throws KeyStoreException        the key store exception
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     * @throws KeyManagementException   the key management exception
+     * @throws URISyntaxException       the uri syntax exception
+     */
+    @Bean
+    public ElasticsearchClient elasticsearchClient() {
+        log.error("loading elasticsearch info uris{} username{} password{}", uris, username, password);
+        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+        credentialsProvider.setCredentials(
+                AuthScope.ANY, new UsernamePasswordCredentials(username, password));
+        HttpHost[] httpHost = new HttpHost[uris.length];
+        for (int i = 0; i < uris.length; i++) {
+            URI uri = URI.create(uris[i]);
+            httpHost[i] = new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme());
+        }
+        RestClientBuilder restClientBuilder =
+                RestClient.builder(httpHost)
+                        .setHttpClientConfigCallback(
+                                httpClientBuilder -> {
+                                    httpClientBuilder.disableAuthCaching();
+                                    return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
+                                });
+        ElasticsearchTransport transport =
+                new RestClientTransport(restClientBuilder.build(), new JacksonJsonpMapper());
+        return new ElasticsearchClient(transport);
     }
-    RestClientBuilder restClientBuilder =
-        RestClient.builder(httpHost)
-            .setHttpClientConfigCallback(
-                httpClientBuilder -> {
-                  httpClientBuilder.disableAuthCaching();
-                  return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
-                });
-    ElasticsearchTransport transport =
-        new RestClientTransport(restClientBuilder.build(), new JacksonJsonpMapper());
-    return new ElasticsearchClient(transport);
-  }
 }

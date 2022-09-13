@@ -3,16 +3,30 @@ package cn.liondance.liondanceapi.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.http.MediaType;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * @author sunwei
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+
+    /**
+     *  Total customization - see below for explanation.
+     *https://spring.io/blog/2013/05/11/content-negotiation-using-spring-mvc
+     */
+    @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.
+                favorParameter(true).
+                parameterName("mediaType").
+                ignoreAcceptHeader(true).
+                defaultContentType(MediaType.APPLICATION_JSON).
+                mediaType("xml", MediaType.APPLICATION_XML).
+                mediaType("json", MediaType.APPLICATION_JSON);
+    }
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
@@ -29,6 +43,7 @@ public class WebConfig implements WebMvcConfigurer {
             }
         };
     }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.

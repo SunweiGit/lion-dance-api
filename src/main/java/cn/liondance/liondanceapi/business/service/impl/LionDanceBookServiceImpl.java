@@ -23,29 +23,29 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class LionDanceBookServiceImpl implements LionDanceBookService {
-  private final LionDanceBookRepository lionDanceBookRepository;
-  private final LionDanceBookChapterRepository lionDanceBookChapterRepository;
+    private final LionDanceBookRepository        lionDanceBookRepository;
+    private final LionDanceBookChapterRepository lionDanceBookChapterRepository;
 
-  private final ElasticsearchClient elasticsearchClient;
+    private final ElasticsearchClient elasticsearchClient;
 
-  @Override
-  public LionDanceBook newBook(LionDanceBook entity) {
-    entity.setId(LionDanceIdGenerater.randomBase64UUID());
-    return lionDanceBookRepository.saveAndFlush(entity);
-  }
+    @Override
+    public LionDanceBook newBook(LionDanceBook entity) {
+        entity.setId(LionDanceIdGenerater.randomBase64UUID());
+        return lionDanceBookRepository.saveAndFlush(entity);
+    }
 
-  @Override
-  public LionDanceBookChapter newChapter(LionDanceBookChapter entity) {
-    entity.setId(LionDanceIdGenerater.randomBase64UUID());
-    entity.setSort(lionDanceBookChapterRepository.countByBookId(entity.getBookId()));
-    return lionDanceBookChapterRepository.saveAndFlush(entity);
-  }
+    @Override
+    public LionDanceBookChapter newChapter(LionDanceBookChapter entity) {
+        entity.setId(LionDanceIdGenerater.randomBase64UUID());
+        entity.setSort(lionDanceBookChapterRepository.countByBookId(entity.getBookId()));
+        return lionDanceBookChapterRepository.saveAndFlush(entity);
+    }
 
-  @Override
-  @SneakyThrows
-  public ResponseBody<JSONObject> searchBook(BasicSearchModel basicSearchModel) {
-    SearchRequest.Builder searchRequest = basicSearchModel.searchRequest();
-    searchRequest.index("lion_dance_book");
-    return basicSearchModel.search(elasticsearchClient, searchRequest);
-  }
+    @Override
+    @SneakyThrows
+    public ResponseBody<JSONObject> searchBook(BasicSearchModel basicSearchModel) {
+        SearchRequest.Builder searchRequest = basicSearchModel.searchRequest();
+        searchRequest.index("lion_dance_book");
+        return basicSearchModel.search(elasticsearchClient, searchRequest);
+    }
 }

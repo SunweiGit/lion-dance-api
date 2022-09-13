@@ -23,42 +23,42 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RequestMapping(value = "lionDnacePoetry")
 public class LionDancePoetryController {
-  private final LionDancePoetryService lionDnacePoetryService;
+    private final LionDancePoetryService lionDnacePoetryService;
 
-  /**
-   * New book response entity.
-   *
-   * @param body the body
-   * @return the response entity
-   */
-  @ApiOperation(value = "新增book")
-  @PostMapping(value = "newBook")
-  @ApiImplicitParam(
-      name = "body",
-      example =
-          "{\n"
-              + "  \"author\": \"\",\n"
-              + "  \"name\": \"\",\n"
-              + "  \"summary\": \"\",\n"
-              + "  \"tag\": \"\"\n"
-              + "}")
-  public ResponseEntity<LionDancePoetry> newBook(@RequestBody String body) {
-    return ResponseEntity.ok(
-        lionDnacePoetryService.newPoetry(JSON.parseObject(body, LionDancePoetry.class)));
-  }
+    /**
+     * New book response entity.
+     *
+     * @param body the body
+     * @return the response entity
+     */
+    @ApiOperation(value = "新增book")
+    @PostMapping(value = "newBook")
+    @ApiImplicitParam(
+            name = "body",
+            example =
+                    "{\n"
+                            + "  \"author\": \"\",\n"
+                            + "  \"name\": \"\",\n"
+                            + "  \"summary\": \"\",\n"
+                            + "  \"tag\": \"\"\n"
+                            + "}")
+    public ResponseEntity<LionDancePoetry> newBook(@RequestBody String body) {
+        return ResponseEntity.ok(
+                lionDnacePoetryService.newPoetry(JSON.parseObject(body, LionDancePoetry.class)));
+    }
 
-  /**
-   * New chapter response entity.
-   *
-   * @param body the body
-   * @return the response entity
-   */
-  @ApiOperation(value = "newPoetryList")
-  @PostMapping(value = "newPoetryList")
-  public ResponseEntity<String> newPoetryList(@RequestBody String body) {
-    JSON.parseArray(body)
-        .toJavaList(LionDancePoetry.class)
-        .forEach(lionDnacePoetryService::newPoetry);
-    return ResponseEntity.ok("ok");
-  }
+    /**
+     * New chapter response entity.
+     *
+     * @param body the body
+     * @return the response entity
+     */
+    @ApiOperation(value = "newPoetryList")
+    @PostMapping(value = "newPoetryList")
+    public ResponseEntity<String> newPoetryList(@RequestBody String body) {
+        JSON.parseArray(body)
+                .toJavaList(LionDancePoetry.class)
+                .forEach(lionDnacePoetryService::newPoetry);
+        return ResponseEntity.ok("ok");
+    }
 }

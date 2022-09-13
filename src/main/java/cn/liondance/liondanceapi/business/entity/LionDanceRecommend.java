@@ -26,14 +26,14 @@ import javax.persistence.Id;
 public class LionDanceRecommend {
     @Id
     @ApiModelProperty(name = "id", notes = "主键", example = "e9049b08-8fbe-11ec-a113-fe79607838af")
-    private String id;
+    private String          id;
     @ApiModelProperty(name = "name", notes = "名称", example = "汉字")
-    private String name;
+    private String          name;
     @ApiModelProperty(name = "name", notes = "名称", example = "学习汉字")
-    private String description;
+    private String          description;
     @ApiModelProperty(name = "name", notes = "名称", example = "http://liondance.cn:9000")
-    private String imageUrl;
-    private String sort;
+    private String          imageUrl;
+    private String          sort;
     private String          route;
     @Enumerated(value = EnumType.STRING)
     private RouteType       routeType;

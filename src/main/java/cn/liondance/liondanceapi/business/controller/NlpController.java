@@ -32,32 +32,32 @@ import java.util.HashSet;
 @RequestMapping(value = "nlp")
 public class NlpController {
 
-  /**
-   * New book response entity.
-   *
-   * @param body the body
-   * @return the response entity
-   */
-  @ApiOperation(value = "nlpAnalysis")
-  @PostMapping(value = "nlpAnalysis")
-  @ApiImplicitParam(name = "body", example = "洁面仪配合洁面深层清洁毛孔")
-  public ResponseEntity<HashSet<String>> nlpAnalysis(@RequestBody String body) {
-    HashSet<String> set = Sets.newHashSet();
-    Forest forest = new Forest();
-    forest.add(new SmartForest(1));
-    NlpAnalysis.parse(body, forest).forEach(o -> set.add(o.getName()));
-    return ResponseEntity.ok(set);
-  }
+    /**
+     * New book response entity.
+     *
+     * @param body the body
+     * @return the response entity
+     */
+    @ApiOperation(value = "nlpAnalysis")
+    @PostMapping(value = "nlpAnalysis")
+    @ApiImplicitParam(name = "body", example = "洁面仪配合洁面深层清洁毛孔")
+    public ResponseEntity<HashSet<String>> nlpAnalysis(@RequestBody String body) {
+        HashSet<String> set = Sets.newHashSet();
+        Forest forest = new Forest();
+        forest.add(new SmartForest(1));
+        NlpAnalysis.parse(body, forest).forEach(o -> set.add(o.getName()));
+        return ResponseEntity.ok(set);
+    }
 
-  @ApiOperation(value = "dicAnalysis")
-  @PostMapping(value = "dicAnalysis")
-  @ApiImplicitParam(name = "body", example = "洁面仪配合洁面深层清洁毛孔")
-  public ResponseEntity<HashSet<String>> dicAnalysis(@RequestBody String body) {
-    String key = "购物,卡,私聊,福利,红包,现金,返点,提成,返利,好处费,奖励,中奖,提现,回扣,购物卡,商务宴请,贿赂";
-    Arrays.stream(key.split(",")).forEach(o -> DicLibrary.insert(DicLibrary.DEFAULT, o));
-    log.error("{}", DicLibrary.get(DicLibrary.DEFAULT).branches);
-    HashSet<String> set = Sets.newHashSet();
-    DicAnalysis.parse(body).forEach(o -> set.add(o.getName()));
-    return ResponseEntity.ok(set);
-  }
+    @ApiOperation(value = "dicAnalysis")
+    @PostMapping(value = "dicAnalysis")
+    @ApiImplicitParam(name = "body", example = "洁面仪配合洁面深层清洁毛孔")
+    public ResponseEntity<HashSet<String>> dicAnalysis(@RequestBody String body) {
+        String key = "购物,卡,私聊,福利,红包,现金,返点,提成,返利,好处费,奖励,中奖,提现,回扣,购物卡,商务宴请,贿赂";
+        Arrays.stream(key.split(",")).forEach(o -> DicLibrary.insert(DicLibrary.DEFAULT, o));
+        log.error("{}", DicLibrary.get(DicLibrary.DEFAULT).branches);
+        HashSet<String> set = Sets.newHashSet();
+        DicAnalysis.parse(body).forEach(o -> set.add(o.getName()));
+        return ResponseEntity.ok(set);
+    }
 }

@@ -9,4 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author sunwei
  */
-public interface LionDanceBookRepository extends JpaRepository<LionDanceBook, String> {}
+public interface LionDanceBookRepository extends JpaRepository<LionDanceBook, String> {
+}

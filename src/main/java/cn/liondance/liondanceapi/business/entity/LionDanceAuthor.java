@@ -19,13 +19,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LionDanceAuthor {
-  @Id private String        id;
-  private String name;
-  @Lob private String introduction;
-  private     String        dynasty;
-  @CreatedDate
-  private     LocalDateTime   createdDate;
-  @Enumerated(value = EnumType.STRING)
-  private ExecutionStatus executionStatus;
+    @Id
+    private String          id;
+    private String          name;
+    @Lob
+    private String          introduction;
+    private String          dynasty;
+    @CreatedDate
+    private LocalDateTime   createdDate;
+    @Enumerated(value = EnumType.STRING)
+    private ExecutionStatus executionStatus;
 
 }

@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class LionDancePoetryServiceImpl implements LionDancePoetryService {
-  private final LionDancePoetryRepository lionDnacePoetryRepository;
+    private final LionDancePoetryRepository lionDnacePoetryRepository;
 
-  @Override
-  public LionDancePoetry newPoetry(LionDancePoetry entity) {
-    entity.setId(LionDanceIdGenerater.randomBase64UUID());
-    return lionDnacePoetryRepository.saveAndFlush(entity);
-  }
+    @Override
+    public LionDancePoetry newPoetry(LionDancePoetry entity) {
+        entity.setId(LionDanceIdGenerater.randomBase64UUID());
+        return lionDnacePoetryRepository.saveAndFlush(entity);
+    }
 }

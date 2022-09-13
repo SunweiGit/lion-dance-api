@@ -11,10 +11,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author sunwei
  */
 public interface LionDanceBookChapterRepository
-    extends JpaRepository<LionDanceBookChapter, String> {
-  long countByBookId(String bookId);
+        extends JpaRepository<LionDanceBookChapter, String> {
+    long countByBookId(String bookId);
 
 
-  
-  
 }

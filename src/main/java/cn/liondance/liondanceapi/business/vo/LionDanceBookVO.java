@@ -16,11 +16,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LionDanceBookVO {
-  private String id;
-  private String name;
-  private JSONArray summary;
-  private String author;
-  private JSONArray tag;
-  private String status;
-  private LocalDateTime createdDate;
+    private String        id;
+    private String        name;
+    private JSONArray     summary;
+    private String        author;
+    private JSONArray     tag;
+    private String        status;
+    private LocalDateTime createdDate;
 }
