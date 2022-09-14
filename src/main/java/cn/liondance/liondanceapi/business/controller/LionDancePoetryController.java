@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "book")
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "lionDnacePoetry")
+@RequestMapping(value = "lionDancePoetry")
 public class LionDancePoetryController {
     private final LionDancePoetryService lionDnacePoetryService;
 
