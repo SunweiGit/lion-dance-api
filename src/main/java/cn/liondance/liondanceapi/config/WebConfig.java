@@ -14,8 +14,8 @@ public class WebConfig implements WebMvcConfigurer {
 
 
     /**
-     *  Total customization - see below for explanation.
-     *https://spring.io/blog/2013/05/11/content-negotiation-using-spring-mvc
+     * Total customization - see below for explanation.
+     * https://spring.io/blog/2013/05/11/content-negotiation-using-spring-mvc
      */
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {

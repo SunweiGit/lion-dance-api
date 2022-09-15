@@ -38,8 +38,8 @@ public class LionDanceCipherCode {
             Security.addProvider(new BouncyCastleProvider());
             String transformation = "AES/CBC/PKCS7Padding";
             cipher = Cipher.getInstance(transformation);
-            keySpec = new SecretKeySpec("axap1tanexmj7kiveunnawse" .getBytes(StandardCharsets.UTF_8), algorithm);
-            ivSpec = new IvParameterSpec("1954682228745975" .getBytes(StandardCharsets.UTF_8));
+            keySpec = new SecretKeySpec("axap1tanexmj7kiveunnawse".getBytes(StandardCharsets.UTF_8), algorithm);
+            ivSpec = new IvParameterSpec("1954682228745975".getBytes(StandardCharsets.UTF_8));
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
             e.printStackTrace();
         }

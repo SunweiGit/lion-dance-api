@@ -9,7 +9,7 @@ public enum OperateType {
     update("update"),
     load("load"),
     create("create");
-    private String value;
+    private final String value;
 
     OperateType(String value) {
         this.value = value;
