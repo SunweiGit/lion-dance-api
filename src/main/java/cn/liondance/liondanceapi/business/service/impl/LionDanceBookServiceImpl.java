@@ -6,7 +6,7 @@ import cn.liondance.liondanceapi.business.repository.LionDanceBookChapterReposit
 import cn.liondance.liondanceapi.business.repository.LionDanceBookRepository;
 import cn.liondance.liondanceapi.business.service.LionDanceBookService;
 import cn.liondance.liondanceapi.common.BasicSearchModel;
-import cn.liondance.liondanceapi.utils.LionDanceIdGenerater;
+import cn.liondance.liondanceapi.utils.LionDanceIdGenerator;
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch.core.SearchRequest;
 import co.elastic.clients.elasticsearch.core.search.ResponseBody;
@@ -30,13 +30,13 @@ public class LionDanceBookServiceImpl implements LionDanceBookService {
 
     @Override
     public LionDanceBook newBook(LionDanceBook entity) {
-        entity.setId(LionDanceIdGenerater.randomBase64UUID());
+        entity.setId(LionDanceIdGenerator.randomBase64UUID());
         return lionDanceBookRepository.saveAndFlush(entity);
     }
 
     @Override
     public LionDanceBookChapter newChapter(LionDanceBookChapter entity) {
-        entity.setId(LionDanceIdGenerater.randomBase64UUID());
+        entity.setId(LionDanceIdGenerator.randomBase64UUID());
         entity.setSort(lionDanceBookChapterRepository.countByBookId(entity.getBookId()));
         return lionDanceBookChapterRepository.saveAndFlush(entity);
     }
