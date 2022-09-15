@@ -60,4 +60,6 @@ public class NlpController {
         DicAnalysis.parse(body).forEach(o -> set.add(o.getName()));
         return ResponseEntity.ok(set);
     }
+
+
 }

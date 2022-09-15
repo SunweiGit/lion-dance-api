@@ -42,9 +42,7 @@ public class BasicSearchModel {
             searchRequest.source(s -> s.filter(f -> f.includes(List.of(include.split(",")))));
         }
         searchRequest.from(0).size(size);
-
         searchRequest.scroll(Time.of(o -> o.time(new TimeValue(5, TimeUnit.MINUTES).toString())));
-
         if (StringUtils.isNotEmpty(orderBy)) {
             Arrays.stream(orderBy.split(";"))
                     .forEach(

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableJpaAuditing
 @EnableAsync
-public class LiondanceApiApplication {
+public class LionDanceApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LiondanceApiApplication.class, args);
+        SpringApplication.run(LionDanceApiApplication.class, args);
     }
 
 }
