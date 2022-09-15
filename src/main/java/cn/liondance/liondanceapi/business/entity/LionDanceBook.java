@@ -24,6 +24,7 @@ public class LionDanceBook {
     private String          name;
     @Lob
     private String          summary;
+    private Long            sort;
     private String          author;
     private String          tag;
     private String          status;

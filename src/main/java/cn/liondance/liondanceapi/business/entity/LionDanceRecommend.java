@@ -33,7 +33,7 @@ public class LionDanceRecommend {
     private String          description;
     @ApiModelProperty(name = "name", notes = "名称", example = "http://liondance.cn:9000")
     private String          imageUrl;
-    private String          sort;
+    private Long            sort;
     private String          route;
     @Enumerated(value = EnumType.STRING)
     private RouteType       routeType;

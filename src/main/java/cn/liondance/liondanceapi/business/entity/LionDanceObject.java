@@ -22,7 +22,7 @@ public class LionDanceObject implements Serializable {
     private String     enName;
     private String     enVoice;
     private String     src;
-    private Integer    sort;
+    private Long       sort;
     private JSONObject tag;
 
     @Enumerated(value = EnumType.STRING)

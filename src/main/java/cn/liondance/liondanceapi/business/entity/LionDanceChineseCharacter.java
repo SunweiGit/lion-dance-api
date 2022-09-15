@@ -19,7 +19,7 @@ public class LionDanceChineseCharacter {
     @ApiModelProperty(name = "id", notes = "主键", example = "e9049b08-8fbe-11ec-a113-fe79607838af")
     private String          id;
     @ApiModelProperty(name = "sort", notes = "排序", example = "一")
-    private Integer         sort;
+    private Long            sort;
     @ApiModelProperty(name = "word", notes = "文字", example = "一")
     private String          word;
     @ApiModelProperty(name = "pinyin", notes = "拼音", example = "[\"yī\"]")

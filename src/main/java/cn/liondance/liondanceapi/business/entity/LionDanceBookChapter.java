@@ -31,7 +31,7 @@ public class LionDanceBookChapter {
     private String          paragraphsPinyin;
     private String          bookId;
     private String          tag;
-    private long            sort;
+    private Long            sort;
     @CreatedDate
     private LocalDateTime   createdDate;
     @Enumerated(value = EnumType.STRING)

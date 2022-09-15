@@ -32,7 +32,7 @@ public class LionDancePoetry {
     private String          notes;
     private String          tag;
     private String          dynasty;
-    private long            sort;
+    private Long            sort;
     @Enumerated(value = EnumType.STRING)
     private ExecutionStatus executionStatus;
 
