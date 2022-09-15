@@ -26,8 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping("chineseCharacter")
-public class ChineseCharacterController {
+@RequestMapping("lionDanceChineseCharacter")
+public class LionDanceChineseCharacterController {
     private final MessageSource                    messageSource;
     private final LionDanceChineseCharacterService lionDanceChineseCharacterService;
 
