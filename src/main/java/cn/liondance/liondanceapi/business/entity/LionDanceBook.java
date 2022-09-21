@@ -27,7 +27,6 @@ public class LionDanceBook {
     private Long            sort;
     private String          author;
     private String          tag;
-    private String          status;
     @CreatedDate
     private LocalDateTime   createdDate;
     @Enumerated(value = EnumType.STRING)
