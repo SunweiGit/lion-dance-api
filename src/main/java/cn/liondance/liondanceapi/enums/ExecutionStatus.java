@@ -5,7 +5,7 @@ package cn.liondance.liondanceapi.enums;
  */
 
 public enum ExecutionStatus {
-    readable("readable"), locked("locked"), unreadable("unreadable");
+    readable("1"), locked("2"), unreadable("3");
 
     public String value;
 
