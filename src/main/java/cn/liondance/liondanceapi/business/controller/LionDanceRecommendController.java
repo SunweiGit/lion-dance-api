@@ -35,6 +35,4 @@ public class LionDanceRecommendController {
         ResponseBody<JSONObject> searchResponse = lionDanceRecommendService.search(basicSearchModel, searchContent);
         return ResponseEntity.ok(basicSearchModel.getResult(searchResponse, LionDanceRecommend.class));
     }
-
-
 }
