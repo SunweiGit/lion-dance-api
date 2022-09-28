@@ -34,6 +34,8 @@ public class BasicSearchModel {
     private String  exclude;
     private String  include;
 
+    private boolean nextPage = false;
+
     public SearchRequest.Builder searchRequest() {
         SearchRequest.Builder searchRequest = getSearchRequest();
         searchRequest.scroll(Time.of(o -> o.time(new TimeValue(5, TimeUnit.MINUTES).toString())));
@@ -88,6 +90,7 @@ public class BasicSearchModel {
                 return elasticsearchClient.scroll(this.scrollRequest().scroll(Time.of(o -> o.time(new TimeValue(5, TimeUnit.MINUTES).toString()))).scrollId(scrollId).build(), JSONObject.class);
             } catch (Exception e) {
                 e.printStackTrace();
+                log.info("请求降级为分页查询");
                 return elasticsearchClient.search(searchRequest(page, searchRequest.build()).build(), JSONObject.class);
             }
         }
@@ -105,6 +108,7 @@ public class BasicSearchModel {
         jsonObject.put("metadata", list);
         jsonObject.put("totalValue", hitsMetadata.total().value());
         jsonObject.put("totalRelation", hitsMetadata.total().relation().jsonValue());
+        jsonObject.put("nextPage", list.isEmpty() ? false : list.size() < size ? false : true);
         return jsonObject;
     }
 }

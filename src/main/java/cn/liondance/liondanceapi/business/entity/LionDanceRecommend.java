@@ -35,6 +35,7 @@ public class LionDanceRecommend {
     private String          imageUrl;
     private Long            sort;
     private String          route;
+    private String          param;
     @Enumerated(value = EnumType.STRING)
     private RouteType       routeType;
     @Enumerated(value = EnumType.STRING)
